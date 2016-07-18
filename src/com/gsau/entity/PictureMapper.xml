@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.gsau.dao.PictureMapper">
+	<!-- 查询全部 -->
+	<select id="findAllPic"  resultType="com.gsau.entity.Picture">
+		SELECT * FROM t_pic_info ORDER BY picId 
+	</select>
+	<!-- 添加图片 -->
+	<insert id="addPic" parameterType="com.gsau.entity.Picture">
+		INSERT  INTO t_pic_info(picName,create_Date,picDescr,picTitle)
+		VALUES (
+			#{picName,jdbcType=VARCHAR},
+			now(),
+			#{picDescr,jdbcType=VARCHAR},
+			#{picTitle,jdbcType=VARCHAR}
+		 )
+	</insert>
+	
+</mapper>

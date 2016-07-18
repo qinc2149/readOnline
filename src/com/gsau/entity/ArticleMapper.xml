@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.gsau.dao.ArticleMapper">
+	<!-- 分页查询 -->
+	<select id="findAllByPage" parameterType="com.gsau.entity.page.ArticlePage" resultType="hashmap">
+		SELECT a.*,c.coluName FROM t_article a
+		JOIN t_column  c ON a.colu_id=c.coluId 
+		<where>
+			<if test='author!=null&amp;&amp;!author.equals("")'>
+				and author like "%"#{author}"%"
+			</if>
+			<if test='create_date!=null&amp;&amp;!create_date.equals("")'>
+				and DATE_FORMAT(a.create_date,'%Y-%m-%d' ) =#{create_date}
+			</if>
+			<if test='coluId!=null&amp;&amp;!coluId.equals("")'>
+				and a.colu_id =#{coluId}
+			</if>
+		</where>
+		ORDER BY art_id asc LIMIT #{start},#{rows}
+	</select>
+	<!-- 根据文章id查询 -->
+	<select id="findArtById"  parameterType="int" resultType="com.gsau.entity.Article">
+		SELECT a.*,c.coluName FROM t_article a JOIN t_column  c ON a.colu_id=c.coluId 
+		WHERE art_id= #{id}
+	</select>
+	<select id="totalRows" resultType="int" parameterType="com.gsau.entity.page.ArticlePage">
+		select count(*) from t_article
+	</select>
+	<!-- 按栏目id查询文章 -->
+	<select id="findArtByColuId" parameterType="int" resultType="com.gsau.entity.Article">
+		SELECT * FROM t_article
+		WHERE colu_id= #{id}
+	</select>
+	<!-- 添加文章 -->
+	<insert id="addArticle" parameterType="com.gsau.entity.Article">
+		INSERT  INTO  t_article (title, author,create_date,content,colu_id)
+		VALUES (
+			#{title,jdbcType=VARCHAR},
+			#{author,jdbcType=VARCHAR},
+			now(),
+			#{content,jdbcType=VARCHAR},
+			#{colu_id,jdbcType=VARCHAR}
+		 )
+	</insert>
+	<!-- 删除文章 -->
+	<delete id="delArtByIds"  parameterType="hashMap">
+		<![CDATA[
+			DELETE FROM t_article WHERE art_id IN
+		]]>
+		<foreach collection="ids" open="(" close=")" separator="," item="artId">
+			#{artId}
+		</foreach>
+	</delete>
+</mapper>

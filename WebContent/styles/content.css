@@ -1,0 +1,29 @@
+*{
+margin:0px;
+padding:0px;}
+#content {margin-top:-10px;}
+#content dl dt{
+	border:#CCCCCC solid;
+	border-width:0px 0px 1px 0px;
+	text-indent:10px;
+	padding:25px 0px;
+	background:url(../images/nrbc.jpg) no-repeat center left;
+	text-indent:70px;
+	color:#210d11;
+	font-size:25px;
+	margin-bottom:12px;
+	color:#006600;
+}
+#content dl dd{
+	text-indent:20px;
+	line-height:35px;
+	font-size:18px;
+	font-family:"ËÎÌו";
+	color:#009900;
+}
+#share{
+	width:100%;
+	line-height:50px;
+	margin-bottom:20px;
+	text-align:right;
+}

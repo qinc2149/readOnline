@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.gsau.dao.UserMapper">
+	<!-- 分页查询 -->
+	<select id="findAllByPage" parameterType="com.gsau.entity.page.UserPage" resultType="com.gsau.entity.User">
+		SELECT * FROM t_admin_info
+		<where>
+			<if test='admin_code!=null&amp;&amp;!admin_code.equals("")'>
+				and admin_code like "%"#{admin_code}"%"
+			</if>
+		</where>
+		ORDER BY admin_id LIMIT #{start},#{rows}
+	</select>
+	<select id="totalRows" resultType="int" parameterType="com.gsau.entity.page.UserPage">
+		select count(*) from t_admin_info
+		<where>
+			<if test='admin_code!=null&amp;&amp;!admin_code.equals("")'>
+				and admin_code like "%"#{admin_code}"%"
+			</if>
+		</where>
+	</select>
+	<!-- 按照用户名查 -->
+	<select id="findByCode" parameterType="string" resultType="com.gsau.entity.User">
+		SELECT *  FROM t_admin_info
+		where admin_code=#{admin_code}
+	</select>
+	<!-- 查询全部 -->
+	<select id="findAll"  resultType="com.gsau.entity.Column">
+		SELECT * FROM t_column ORDER BY coluId 
+	</select>
+	<!-- 添加栏目 -->
+	<insert id="addColu" parameterType="com.gsau.entity.Column">
+		INSERT  INTO t_column(coluName,create_Date,coluDesc)
+		VALUES (
+			#{coluName,jdbcType=VARCHAR},
+			now(),
+			#{coluDesc,jdbcType=VARCHAR}
+		 )
+	</insert>
+	<!-- 修改栏目 -->
+	<update id='updateColu' parameterType="com.gsau.entity.Column">
+		UPDATE t_column SET 
+			coluName=#{coluName,jdbcType=VARCHAR} ,
+			coluDesc=#{coluDesc,jdbcType=VARCHAR} ,
+			create_Date=NOW() 
+		WHERE coluId=#{coluId}
+	</update>
+	<!-- 删除栏目 -->
+	<delete id="deleteColu"  parameterType="hashMap">
+		<![CDATA[
+			DELETE FROM t_column WHERE coluId IN
+		]]>
+		<foreach collection="ids" open="(" close=")" separator="," item="coluId">
+			#{coluId}
+		</foreach>
+	</delete>
+</mapper>

@@ -1,0 +1,137 @@
+/* CSS Document */
+*{
+	margin:0px;
+	padding:0px;
+}
+body a{
+	text-decoration:none;
+	color:#666;
+}
+body a:hover{
+	font-weight:bold;
+	text-decoration:none;
+	color:#F60;
+}
+/*-----------------------------------------------*/
+#left{
+	border:1px #CCCCCC solid;
+	border-radius: 5px;
+}
+#left dl dt{
+	border:#CCCCCC solid;
+	border-width:0px 0px 1px 0px;
+	text-indent:10px;
+	background:#e5ded1;
+	padding:6px 0px;
+	color:#210d11;
+}
+#left dl dd ul{
+	margin:10px 15px 0px 0px;
+	text-indent:8px;
+}
+#left dl dd ul li{
+	 height:28px;
+     line-height:28px;
+	 border-bottom:1px dashed #ccc;
+	 list-style-type:none;
+	 font-size:12px;
+	 font-family:"新宋体";
+}
+#left dl dd ul li em{
+	font-style:normal;
+	float:right;
+}
+#center{
+}
+#center_top{
+}
+#center_top dl dt{
+	text-indent:10px;
+	padding:6px 0px;
+	color:#210d11;
+	background:url(../images/jrrd.jpg) no-repeat bottom left;
+}
+#center_top_media{
+	margin-top:15px;
+	padding-bottom:10px;
+	border-bottom:dashed 1px #CCCCCC;
+}
+#center_buttom{
+	border:1px #CCCCCC solid;
+	border-radius:4px;
+}
+#center_buttom #myTab{
+	background:#e5ded1;
+}
+#center_buttom #myTab li{
+	color:#210d11;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+}
+#myTabContent{
+margin-top:-10px;}
+#tab01 ul, #tab02 ul{
+	margin:0px 15px 0px 5px;
+	text-indent:8px;
+	margin-bottom:20px;
+}
+#tab01 ul li, #tab02 ul li{
+	 height:28px;
+     line-height:28px;
+	 border-bottom:1px dashed #ccc;
+	 list-style-type:none;
+	 font-size:12px;
+	 font-family:"新宋体";
+}
+#tab01 ul li em, #tab02 ul li em{
+	font-style:normal;
+	float:right;
+}
+#right{
+}
+#right_top {
+	border:1px #CCCCCC solid;
+	border-radius: 5px;
+	margin-bottom:8px;
+}
+#right_buttom {
+	border:1px #CCCCCC solid;
+	border-radius: 5px;
+}
+#right_buttom dl dt{
+	border:#CCCCCC solid;
+	border-width:0px 0px 1px 0px;
+	text-indent:10px;
+	background:#e5ded1;
+	padding:6px 0px;
+	color:#210d11;
+}
+#right_buttom dl dd{
+	text-align:center;
+	margin-top:10px;
+	margin-bottom:-10px;
+}
+#right_top dl dt{
+	border:#CCCCCC solid;
+	border-width:0px 0px 1px 0px;
+	text-indent:10px;
+	background:#e5ded1;
+	padding:6px 0px;
+	color:#210d11;
+}
+#right_top dl dd ol{
+	margin:10px 15px 0px 0px;
+	text-indent:8px;
+}
+#right_top dl dd ol li{
+	 height:28px;
+     line-height:28px;
+	 border-bottom:1px dashed #ccc;
+	 list-style-type:none;
+	 font-size:12px;
+	 font-family:"新宋体";
+}
+#right_top dl dd ol li em{
+	font-style:normal;
+	float:right;
+}
